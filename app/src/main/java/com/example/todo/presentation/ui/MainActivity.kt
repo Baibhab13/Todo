@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
@@ -15,6 +16,7 @@ import com.example.todo.data.database.TodoDatabase
 import com.example.todo.presentation.theme.TodoTheme
 import com.example.todo.presentation.viewmodel.TodoViewModel
 
+@Suppress("UNCHECKED_CAST")
 class MainActivity : ComponentActivity() {
 
     // Created a instance of the viewModel and passed the database db.dao
@@ -46,7 +48,9 @@ class MainActivity : ComponentActivity() {
                     bottomBar = {
                         AddTodoBottomBar(viewModel = viewModel)
                     },
-                    content = TODO(),
+                    content = { innerPadding ->
+                        TodoScreen(modifier = Modifier.padding(innerPadding), viewModel = viewModel)
+                    },
                 )
             }
         }
