@@ -92,12 +92,14 @@ fun TodoListItem(todo: TodoEntity,
                     modifier = Modifier.weight(1f),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
-                    Checkbox(checked = status, onCheckedChange = { newstastus ->
-                        val newStatuses = todo.statuses.toMutableList()
-                        newStatuses[index] = newstastus
-                        onStatusChange(newStatuses)
-
-                    })
+                    Checkbox(
+                        checked = status,
+                        onCheckedChange = { newstastus ->
+                            val newStatuses = todo.statuses.toMutableList()
+                            newStatuses[index] = newstastus
+                            onStatusChange(newStatuses)
+                        }
+                    )
                 }
             }
         }
