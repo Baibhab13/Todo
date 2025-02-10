@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface TodoDao {
     @Upsert
-    suspend fun upsertTodo(todoEntity: TodoEntity)
+    suspend fun upsert(todoEntity: TodoEntity)
 
     @Delete
-    suspend fun deleteTodo(todoEntity: TodoEntity)
+    suspend fun delete(todoEntity: TodoEntity)
 
     @Query("SELECT * FROM todos ORDER BY id ASC")
-    fun getAllTodosById(): Flow<List<TodoEntity>>
+    fun getAllTodosOrderedById(): Flow<List<TodoEntity>>
 
 }

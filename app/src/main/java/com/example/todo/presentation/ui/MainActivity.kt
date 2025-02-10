@@ -24,12 +24,13 @@ class MainActivity : ComponentActivity() {
         Room.databaseBuilder(
             applicationContext,
             TodoDatabase::class.java,
-            name = "todos.database"
+            name = "todo_database"
         ).build()
     }
-    private val viewModel by viewModels<TodoViewModel> (
+
+    private val viewModel by viewModels<TodoViewModel>(
         factoryProducer = {
-            object: ViewModelProvider.Factory {
+            object : ViewModelProvider.Factory {
                 override fun <T : ViewModel> create(modelClass: Class<T>): T {
                     return TodoViewModel(db.dao) as T
                 }

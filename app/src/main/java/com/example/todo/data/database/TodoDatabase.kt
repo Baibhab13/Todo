@@ -12,6 +12,6 @@ import com.example.todo.data.dao.TodoDao
     version = 1
 )
 @TypeConverters(TodoConverters::class)
-abstract class TodoDatabase : RoomDatabase(){
+abstract class TodoDatabase: RoomDatabase() {
     abstract val dao: TodoDao
 }

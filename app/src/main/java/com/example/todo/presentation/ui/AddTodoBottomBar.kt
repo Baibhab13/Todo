@@ -20,33 +20,35 @@ import com.example.todo.presentation.viewmodel.TodoViewModel
 
 @Composable
 fun AddTodoBottomBar(viewModel: TodoViewModel) {
-    BottomAppBar {
-        var todoTitle by remember { mutableStateOf("") }
-        Row (
+    BottomAppBar() {
+        var todoTitle by remember {
+            mutableStateOf("")
+        }
+        Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             OutlinedTextField(
                 value = todoTitle,
-                onValueChange = {todoTitle = it},
-                label = { Text(text = "Todo Title")},
+                onValueChange = {
+                    todoTitle = it
+                },
+                label = { Text(text = "Todo Title") },
                 modifier = Modifier.weight(1f),
                 singleLine = true,
                 maxLines = 1
             )
             Button(
                 onClick = {
-                    if(todoTitle.isNotBlank()) {
+                    if (todoTitle.isNotBlank()) {
                         viewModel.insertTodo(todoTitle)
                         todoTitle = ""
                     }
                 },
                 shape = RoundedCornerShape(6.dp)
             ) {
-                Text(
-                    text = "Add"
-                )
+                Text(text = "Add")
             }
         }
     }
